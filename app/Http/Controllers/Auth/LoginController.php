@@ -76,21 +76,18 @@ class LoginController extends Controller
                 EMAIL => $user[EMAIL],
                 'password' => $user['password']
             ])){
-        // Authentication passed...
-        if(Auth::user()->id_role==3 && Auth::user()->id_user_state==1){
-            return array(
-                "id" => Auth::user()->id,
-                "name" => Auth::user()->name,
-                "lastname" => Auth::user()->lastname,
-                EMAIL => Auth::user()->email,
-                "document" => Auth::user()->document,                
-                "permissions" => $this->getPermissionsByRole(Auth::user()->id_role)
-            );
-            
-        }else{
+        // Authentication passed..
+            if(Auth::user()->id_role==3 && Auth::user()->id_user_state==1){
+                return array(
+                    "id" => Auth::user()->id,
+                    "name" => Auth::user()->name,
+                    "lastname" => Auth::user()->lastname,
+                    EMAIL => Auth::user()->email,
+                    "document" => Auth::user()->document,                
+                    "permissions" => $this->getPermissionsByRole(Auth::user()->id_role)
+                );        
+            }
             return [];
         }
-
-    }
     }
 }

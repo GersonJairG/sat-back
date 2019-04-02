@@ -41,7 +41,7 @@ class QueueTypesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
     public function show($idDependence)
@@ -65,12 +65,12 @@ class QueueTypesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
-        $queueType = QueueType::find($id);  
+        $queueType = QueueType::find($identificador);  
         //si exite el name del request lo pone, si no pone el nombre del servicio.
         $queueType->name = isset($request['name']) ? $request['name'] : $queueType->name;
 
@@ -85,12 +85,12 @@ class QueueTypesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($identificador)
     {
-        $queueType = Service::find($id);
+        $queueType = Service::find($identificador);
         $nombre = $queueType->name;
         $queueType->delete();
 

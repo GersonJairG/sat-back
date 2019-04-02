@@ -39,24 +39,24 @@ class ServicesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($identificador)
     {
-        return Service::find($id);
+        return Service::find($identificador);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $identificador)
     {
-        $service = Service::find($id);
+        $service = Service::find($identificador);
         $service->name = isset($request['name']) ? $request['name'] : $service->name;
         $service->id_dependence = isset($request[idDependence]) ? $request[idDependence] : $service->id_dependence;
         $service->save();
@@ -66,12 +66,12 @@ class ServicesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($identificador)
     {
-        $service = Service::find($id);
+        $service = Service::find($identificador);
         $nombre = $service->name;
         $service->delete();
 

@@ -136,7 +136,7 @@ class UserController extends Controller
      * Consulta una dependencia dado su id y retorna la información de esta
      * consulta para los administradores
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
     public function show($idRole)
@@ -150,7 +150,7 @@ class UserController extends Controller
      /**
      * 
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
     public function showFindUsers($idUser){
@@ -159,7 +159,7 @@ class UserController extends Controller
     /**
      * 
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
     public function showUsersCommon($idStateUser){
@@ -170,7 +170,7 @@ class UserController extends Controller
      /**
      * 
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
     public function findUserForEmail($email){
@@ -181,7 +181,7 @@ class UserController extends Controller
      * Actualiza la información de una dependencia dado su id
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -205,12 +205,12 @@ class UserController extends Controller
     /**
      * Elimina el registro de una dependencia dado su id
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($identificador)
     {
-        $user = User::find($id);
+        $user = User::find($identificador);
         $nombre = $user->name;
         $user->delete();
 

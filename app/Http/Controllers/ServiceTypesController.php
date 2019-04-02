@@ -43,15 +43,15 @@ class ServiceTypesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
     public function show($idService){
         return ServiceType::where('id_service', '=', $idService)->get();
     }
 
-    public function findServiceType($id){
-        return ServiceType::find($id);
+    public function findServiceType($identificador){
+        return ServiceType::find($identificador);
     }
 
     public function getForDependence($idDependence){
@@ -66,12 +66,12 @@ class ServiceTypesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $identificador)
     {
-        $serviceType = ServiceType::find($id);        
+        $serviceType = ServiceType::find($identificador);        
         $serviceType->description = isset($request['description']) ? $request['description'] : $serviceType->description;
         $serviceType->average_time = isset($request['average_time']) ? $request['average_time'] : $serviceType->average_time;
         $serviceType->id_service = isset($request['id_service']) ? $request['id_service'] : $serviceType->id_service;
@@ -83,12 +83,12 @@ class ServiceTypesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($identificador)
     {
-        $serviceType = ServiceType::find($id);
+        $serviceType = ServiceType::find($identificador);
         $nombre = $serviceType->name;
         $serviceType->delete();
 

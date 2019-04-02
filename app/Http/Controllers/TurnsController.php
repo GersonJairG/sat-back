@@ -49,17 +49,6 @@ class TurnsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($idDependence)
-    {
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function findForIdFirebase($idTurnFirebase){
         return Turn::where('id_firebase','=',$idTurnFirebase)->firstOrFail();
     }

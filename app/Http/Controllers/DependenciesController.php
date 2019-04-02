@@ -48,32 +48,32 @@ class DependenciesController extends Controller
     /**
      * Consulta una dependencia dado su id y retorna la información de esta
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($identificador)
     {
-        return Dependence::find($id);
+        return Dependence::find($identificador);
     }
 
     /**
      * Actualiza la información de una dependencia dado su id
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $identificador)
     {
-        $dependence = Dependence::find($id);        
+        $dependence = Dependence::find($identificador);        
         $dependence->name = isset($request['name']) ? $request['name'] : $dependence->name;        
         $dependence->save();
         $this->updateTimeBlock($dependence->id,$request['week']);
         return $dependence;
     }
 
-    private function updateTimeBlock($id,$week){
-        $timeBlock = TimeBlock::where('id_dependence',$id)->first();
+    private function updateTimeBlock($identificador,$week){
+        $timeBlock = TimeBlock::where('id_dependence',$identificador)->first();
         $timeBlock->week = isset($week) ? $week : $timeBlock->week;
         $timeBlock->save();
         return $timeBlock;  
@@ -82,12 +82,12 @@ class DependenciesController extends Controller
     /**
      * Elimina el registro de una dependencia dado su id
      *
-     * @param  int  $id
+     * @param  int  $identificador
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($identificador)
     {
-        $dependence = Dependence::find($id);
+        $dependence = Dependence::find($identificador);
         $nombre = $dependence->name;
         $dependence->delete();
 
